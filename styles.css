@@ -10,18 +10,36 @@ button {
 	background-color: rgb(54, 255, 47);
 	color: black;
 	padding: 10px 20px;
-	font-size: 16px;
+	font-size: 24px;
 	font-family: "Russo One", sans-serif;
+	cursor: pointer;
 }
 
-.clockCase {
+#button {
+	margin-bottom: 30px;
+}
+
+.wrapper {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
 }
 
-.buttonCase {
+.content-box {
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+.wrapper-string {
+	color: rgb(54, 255, 47);
+	font-size: 24px;
+	font-family: "Russo One", sans-serif;
+	display: flex;
+	align-items: center;
+}
+
+.delete-btn {
+	margin-left: 20px;
 }

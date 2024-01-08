@@ -1,14 +1,48 @@
-let timerId; // переменная, которая будет хранить ID таймера
+import { data } from './data/data.js';
+import { NumbersList } from './components/numbersList/NumberList.component.js';
+
+const numbersListElement = NumbersList(data);
+
+const boxElement = document.getElementById('wrapper');
+
+boxElement.append(numbersListElement);
 
 
-const startButton = document.getElementById('start');
-startButton.addEventListener('click', function () {
-	// НУЖНО ПОГУГЛИТЬ ЧТО ТАКОЕ setInterval
-	timerId = setInterval(updateClock, 1000); // запускаем  updateClock() каждую секунду
+
+
+const textAria = document.getElementById('box');
+const activeButton = document.getElementById('button');
+
+activeButton.addEventListener('click', function () {
+	newId = createUniqId();
+	textString = document.createElement('p');
+	wrapperString = document.createElement('div');
+	wrapperString.classList.add("wrapper-string");
+	wrapperString.id = newId;
+	let randomNumber = Math.floor(Math.random() * 10) + 1;
+	textString.textContent = 'Новое число:' + ' ' + randomNumber + ' ';
+	stringButton = document.createElement('button');
+	stringButton.classList.add("delete-btn");
+	stringButton.id = newId;
+	stringButton.textContent = '❌';
+	wrapperString.append(textString, stringButton);
+	textAria.append(wrapperString);
+});
+
+function createUniqId() {
+	return Math.floor(Math.random() * 10000);
+}
+
+const deleteButton = document.querySelectorAll('delete-btn');
+const numberString = document.querySelectorAll('wrapper-string');
+deleteButton.addEventListener('click', function () {
+	if (deleteButton.id === numberString.id) {
+		numberString.innerHTML = ' ';
+	}
 });
 
 
-const stopButton = document.getElementById('stop');
+/* const stopButton = document.getElementById('stop');
 stopButton.addEventListener('click', function () {
 	// НУЖНО ПОГУГЛИТЬ ЧТО ТАКОЕ clearInterval
 	clearInterval(timerId); // останавливаем таймер
@@ -23,4 +57,4 @@ function updateClock() {
 	const minutes = now.getMinutes();
 	const seconds = now.getSeconds();
 	clock.textContent = hours + ':' + minutes + ':' + seconds;
-}
+} */
